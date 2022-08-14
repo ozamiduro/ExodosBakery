@@ -7,14 +7,18 @@ public class OrderDTO {
 
     int id;
     UserDTO us;
-    int total;
-    int quantity;
+    WholemealBread wholemeal;
+    RyeBread rye;
+    NutBread nut;
+    int amount;
 
-    public OrderDTO(int id, UserDTO us, int total, int quantity) {
+    public OrderDTO(int id, UserDTO us, WholemealBread wholemeal, RyeBread rye, NutBread nut, int amount) {
         this.id = id;
         this.us = us;
-        this.total = total;
-        this.quantity = quantity;
+        this.wholemeal = wholemeal;
+        this.rye = rye;
+        this.nut = nut;
+        this.amount = amount;
     }
 
     public int getId() {
@@ -25,20 +29,12 @@ public class OrderDTO {
         this.id = id;
     }
 
-    public int getTotal() {
-        return total;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public UserDTO getUs() {
@@ -47,6 +43,30 @@ public class OrderDTO {
 
     public void setUs(UserDTO us) {
         this.us = us;
+    }
+
+    public WholemealBread getWholemeal() {
+        return wholemeal;
+    }
+
+    public void setWholemeal(WholemealBread wholemeal) {
+        this.wholemeal = wholemeal;
+    }
+
+    public RyeBread getRye() {
+        return rye;
+    }
+
+    public void setRye(RyeBread rye) {
+        this.rye = rye;
+    }
+
+    public NutBread getNut() {
+        return nut;
+    }
+
+    public void setNut(NutBread nut) {
+        this.nut = nut;
     }
 }
 
