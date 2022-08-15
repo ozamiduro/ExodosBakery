@@ -1,18 +1,20 @@
 package com.bakeryExodos.ExodosBakery.DTO;
 
 
-import org.apache.catalina.User;
+import com.bakeryExodos.ExodosBakery.DTO.BreadDTO.NutBreadDTO;
+import com.bakeryExodos.ExodosBakery.DTO.BreadDTO.RyeBreadDTO;
+import com.bakeryExodos.ExodosBakery.DTO.BreadDTO.WholemealBreadDTO;
 
 public class OrderDTO {
 
     int id;
     UserDTO us;
-    WholemealBread wholemeal;
-    RyeBread rye;
-    NutBread nut;
+    WholemealBreadDTO wholemeal;
+    RyeBreadDTO rye;
+    NutBreadDTO nut;
     int amount;
 
-    public OrderDTO(int id, UserDTO us, WholemealBread wholemeal, RyeBread rye, NutBread nut, int amount) {
+    public OrderDTO(int id, UserDTO us, WholemealBreadDTO wholemeal, RyeBreadDTO rye, NutBreadDTO nut, int amount) {
         this.id = id;
         this.us = us;
         this.wholemeal = wholemeal;
@@ -45,27 +47,27 @@ public class OrderDTO {
         this.us = us;
     }
 
-    public WholemealBread getWholemeal() {
+    public WholemealBreadDTO getWholemeal() {
         return wholemeal;
     }
 
-    public void setWholemeal(WholemealBread wholemeal) {
+    public void setWholemeal(WholemealBreadDTO wholemeal) {
         this.wholemeal = wholemeal;
     }
 
-    public RyeBread getRye() {
+    public RyeBreadDTO getRye() {
         return rye;
     }
 
-    public void setRye(RyeBread rye) {
+    public void setRye(RyeBreadDTO rye) {
         this.rye = rye;
     }
 
-    public NutBread getNut() {
+    public NutBreadDTO getNut() {
         return nut;
     }
 
-    public void setNut(NutBread nut) {
+    public void setNut(NutBreadDTO nut) {
         this.nut = nut;
     }
 }

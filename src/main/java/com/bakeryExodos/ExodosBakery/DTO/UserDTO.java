@@ -7,10 +7,10 @@ public class UserDTO {
 
     String name;
     String lastName;
-    int phone;
+    String phone;
     String address;
 
-    public UserDTO(String name, String lastName, int phone, String address) {
+    public UserDTO(String name, String lastName, String phone, String address) {
         this.name = name;
         this.lastName = lastName;
         this.phone = phone;
@@ -33,11 +33,11 @@ public class UserDTO {
         this.lastName = lastName;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

@@ -1,13 +1,13 @@
-package com.bakeryExodos.ExodosBakery.DTO;
+package com.bakeryExodos.ExodosBakery.DTO.BreadDTO;
 
-public class RyeBread{
+public class RyeBreadDTO {
 
     String name = "Rye";
     int price = 5000;
     int availability = 5;
     int quantity;
 
-    public RyeBread(String name, int quantity) {
+    public RyeBreadDTO(String name, int quantity) {
         this.name = name;
         //this.price = price;
         //this.availability = availability;

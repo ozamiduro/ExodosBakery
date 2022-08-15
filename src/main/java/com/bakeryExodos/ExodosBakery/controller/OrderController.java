@@ -1,11 +1,13 @@
 package com.bakeryExodos.ExodosBakery.controller;
 
 import com.bakeryExodos.ExodosBakery.DTO.*;
+import com.bakeryExodos.ExodosBakery.DTO.BreadDTO.NutBreadDTO;
+import com.bakeryExodos.ExodosBakery.DTO.BreadDTO.RyeBreadDTO;
+import com.bakeryExodos.ExodosBakery.DTO.BreadDTO.WholemealBreadDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 
 @RestController
@@ -17,12 +19,10 @@ public class OrderController {
     // Method GET -- Obtiene todos los pedidos.
     @GetMapping("/orders")
     public List<OrderDTO> getOrder() {
-
-
-        BRDTO brdto = new BRDTO();
         return list;
     }
 
+    // Method POST
     @PostMapping("/add")
     public List<OrderDTO> postOrder(
             @RequestBody OrderDTO order
@@ -42,11 +42,11 @@ public class OrderController {
         int amountAvaW = brdto.availabilityW(list);
         int amountAvaN = brdto.availabilityN(list);
 
+        System.out.println(brdto.checkPhone(order.getUs().getPhone()));
 
         int availabilityRye = amountAvaR - order.getRye().getQuantity();
         int availabilityNut = amountAvaN - order.getNut().getQuantity();
         int availabilityWholemeal = amountAvaW - order.getWholemeal().getQuantity();
-
 
         int quantityW = 0;
         int quantityR = 0;
@@ -73,13 +73,13 @@ public class OrderController {
             availabilityNut = -1;
         }
 
-        WholemealBread wholemealBread = new WholemealBread(order.getWholemeal().getName(),
+        WholemealBreadDTO wholemealBread = new WholemealBreadDTO(order.getWholemeal().getName(),
                 quantityW);
 
-        RyeBread ryeBread = new RyeBread(order.getRye().getName(),
+        RyeBreadDTO ryeBread = new RyeBreadDTO(order.getRye().getName(),
                 quantityR);
 
-        NutBread nutBread = new NutBread(order.getNut().getName(),
+        NutBreadDTO nutBread = new NutBreadDTO(order.getNut().getName(),
                 quantityN);
 
         if (availabilityRye >= 0) {
@@ -102,14 +102,14 @@ public class OrderController {
 
         int amount = amountRye + amountNut + amountWholemeal;
 
-
         list.add(new OrderDTO(order.getId(), us, wholemealBread, ryeBread,
                 nutBread, amount));
+
 
         return list;
     }
 
-    // --- Método PUT
+    // Método PUT
     @PutMapping("/update")
     public List<OrderDTO> putOrder(
             @RequestBody OrderDTO order
@@ -119,6 +119,7 @@ public class OrderController {
         int amountAvaW = brdto.availabilityW(list);
         int amountAvaN = brdto.availabilityN(list);
 
+        System.out.println(brdto.checkPhone(order.getUs().getPhone()));
         list.forEach(data -> {
             if (data.getId() == order.getId()) {
                 data.getUs().setName(order.getUs().getName());
@@ -162,13 +163,13 @@ public class OrderController {
                     data.getNut().setQuantity(0);
                 }
 
-                WholemealBread wholemealBread = new WholemealBread(order.getWholemeal().getName(),
+                WholemealBreadDTO wholemealBread = new WholemealBreadDTO(order.getWholemeal().getName(),
                         quantityW);
 
-                RyeBread ryeBread = new RyeBread(order.getRye().getName(),
+                RyeBreadDTO ryeBread = new RyeBreadDTO(order.getRye().getName(),
                         quantityR);
 
-                NutBread nutBread = new NutBread(order.getNut().getName(),
+                NutBreadDTO nutBread = new NutBreadDTO(order.getNut().getName(),
                         quantityN);
 
                 if (availabilityRye >= 0) {
@@ -180,11 +181,9 @@ public class OrderController {
                 }
 
                 if (availabilityWholemeal >= 0) {
-                    // Actualice el inventario restantele la venta de ahora con los panes que ya habia
                     wholemealBread.setAvailability(availabilityWholemeal);
                     data.getWholemeal().setAvailability(availabilityWholemeal);
                 } else {
-                    // No se actualice que no hay pan
                     wholemealBread.setAvailability(amountAvaW);
                     data.getWholemeal().setAvailability(amountAvaW);
                 }
@@ -200,10 +199,10 @@ public class OrderController {
                 data.setAmount(amountRye + amountWholemeal + amountNut);
             }
         });
-
         return list;
     }
 
+    // Method DELETE
     @DeleteMapping("/delete")
     public List<OrderDTO> deleteOrder(
             @RequestBody OrderDTO order
@@ -215,6 +214,4 @@ public class OrderController {
         }
         return list;
     }
-
-
 }

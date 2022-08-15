@@ -1,13 +1,13 @@
-package com.bakeryExodos.ExodosBakery.DTO;
+package com.bakeryExodos.ExodosBakery.DTO.BreadDTO;
 
-public class NutBread {
+public class NutBreadDTO {
 
     String name = "Nut";
     int price = 10000;
     int availability = 5;
     int quantity;
 
-    public NutBread(String name, int quantity) {
+    public NutBreadDTO(String name, int quantity) {
         this.name = name;
         //this.price = price;
         //this.availability = availability;

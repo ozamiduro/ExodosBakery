@@ -1,12 +1,16 @@
 package com.bakeryExodos.ExodosBakery.DTO;
 
+import com.bakeryExodos.ExodosBakery.DTO.BreadDTO.NutBreadDTO;
+import com.bakeryExodos.ExodosBakery.DTO.BreadDTO.RyeBreadDTO;
+import com.bakeryExodos.ExodosBakery.DTO.BreadDTO.WholemealBreadDTO;
+
 import java.util.List;
 
 public class BRDTO {
 
-    WholemealBread wholemealBread = new WholemealBread("", 0);
-    NutBread nutBread = new NutBread("", 0);
-    RyeBread ryeBread = new RyeBread("", 0);
+    WholemealBreadDTO wholemealBread = new WholemealBreadDTO("", 0);
+    NutBreadDTO nutBread = new NutBreadDTO("", 0);
+    RyeBreadDTO ryeBread = new RyeBreadDTO("", 0);
     int availaW = wholemealBread.getAvailability();
     int W;
     int availaR = ryeBread.getAvailability();
@@ -14,7 +18,7 @@ public class BRDTO {
     int availaN = nutBread.getAvailability();
     int N;
 
-    public int availabilityN(List<OrderDTO> list){
+    public int availabilityN(List<OrderDTO> list) {
         list.forEach(dato -> {
             N = dato.getNut().getQuantity();
             availaN = availaN - N;
@@ -27,7 +31,7 @@ public class BRDTO {
         return availaN;
     }
 
-    public int availabilityR(List<OrderDTO> list){
+    public int availabilityR(List<OrderDTO> list) {
         list.forEach(dato -> {
             R = dato.getRye().getQuantity();
             availaR = availaR - R;
@@ -40,7 +44,7 @@ public class BRDTO {
         return availaR;
     }
 
-    public int availabilityW(List<OrderDTO> list){
+    public int availabilityW(List<OrderDTO> list) {
         list.forEach(dato -> {
             W = dato.getWholemeal().getQuantity();
             availaW = availaW - W;
@@ -51,5 +55,16 @@ public class BRDTO {
         }
 
         return availaW;
+    }
+
+    public String checkPhone(String phone) {
+        String msg;
+
+        if (phone.length() < 10) {
+            msg = "Error, número inexistente, actualícelo porfavor";
+        } else {
+            msg = "Número de celular registrado correctamente.";
+        }
+        return msg;
     }
 }
