@@ -4,13 +4,11 @@ public class NutBreadDTO {
 
     String name = "Nut";
     int price = 10000;
-    int availability = 5;
+    int availability = 100;
     int quantity;
 
     public NutBreadDTO(String name, int quantity) {
         this.name = name;
-        //this.price = price;
-        //this.availability = availability;
         this.quantity = quantity;
     }
 

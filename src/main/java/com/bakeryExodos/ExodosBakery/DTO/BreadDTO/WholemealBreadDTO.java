@@ -4,13 +4,11 @@ public class WholemealBreadDTO {
 
     String name = "Wholemeal";
     int price = 3000;
-    int availability = 2;
+    int availability = 100;
     int quantity;
 
     public WholemealBreadDTO(String name, int quantity) {
         this.name = name;
-        //this.price = price;
-        //this.availability = availability;
         this.quantity = quantity;
     }
 
