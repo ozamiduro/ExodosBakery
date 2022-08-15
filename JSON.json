@@ -1,0 +1,126 @@
+{
+  "info": {
+    "_postman_id": "6f0c1197-774b-4193-af7e-0a8f04796640",
+    "name": "ExodosBakery - CRUD Diseño",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "localhost:8080/orders",
+      "id": "1208825d-f361-42fc-819a-00d96e2aae1b",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\" : 1,\r\n    \"us\" : {\r\n        \"name\" : \"Andrea\",\r\n        \"lastName\" : \"Niño\",\r\n        \"phone\" : \"3223451255\",\r\n        \"address\" : \"CR 5 #3-1\"\r\n    },\r\n    \"wholemeal\" : {\r\n        \"name\" : \"Wholemeal\",\r\n        \"quantity\" : 1\r\n    },\r\n    \"rye\" : {\r\n        \"name\" : \"Rye\",\r\n        \"quantity\" : 0\r\n    },\r\n    \"nut\" : {\r\n        \"name\" : \"Nut\",\r\n        \"quantity\" : 0\r\n    },\r\n    \"amount\" : 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "localhost:8080/orders"
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/add",
+      "id": "654db8a0-2980-415a-8fc2-8bb2e02c7713",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\" : 1,\r\n    \"us\" : {\r\n        \"name\" : \"Andrea\",\r\n        \"lastName\" : \"Niño\",\r\n        \"phone\" : \"3223451255\",\r\n        \"address\" : \"CR 5 #3-1\"\r\n    },\r\n    \"wholemeal\" : {\r\n        \"name\" : \"Wholemeal\",\r\n        \"quantity\" : 1\r\n    },\r\n    \"rye\" : {\r\n        \"name\" : \"Rye\",\r\n        \"quantity\" : 0\r\n    },\r\n    \"nut\" : {\r\n        \"name\" : \"Nut\",\r\n        \"quantity\" : 0\r\n    },\r\n    \"amount\" : 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "localhost:8080/add"
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/add",
+      "id": "d3d0b7d0-d4b4-4eb8-89ba-1e15563bdac2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\" : 2,\r\n    \"us\" : {\r\n        \"name\" : \"Paco\",\r\n        \"lastName\" : \"Gonzalez\",\r\n        \"phone\" : \"3142503512\",\r\n        \"address\" : \"CR 8 #1-1\"\r\n    },\r\n    \"wholemeal\" : {\r\n        \"name\" : \"Wholemeal\",\r\n        \"quantity\" : 1\r\n    },\r\n    \"rye\" : {\r\n        \"name\" : \"Rye\",\r\n        \"quantity\" : 2\r\n    },\r\n    \"nut\" : {\r\n        \"name\" : \"Nut\",\r\n        \"quantity\" : 0\r\n    },\r\n    \"amount\" : 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "localhost:8080/add"
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/add",
+      "id": "6b6828dd-fd5f-4bd4-be10-6d61585d97af",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\" : 3,\r\n    \"us\" : {\r\n        \"name\" : \"Felipe\",\r\n        \"lastName\" : \"Duro\",\r\n        \"phone\" : \"3238764985\",\r\n        \"address\" : \"Calle 1 #7-1\"\r\n    },\r\n    \"wholemeal\" : {\r\n        \"name\" : \"Wholemeal\",\r\n        \"quantity\" : 0\r\n    },\r\n    \"rye\" : {\r\n        \"name\" : \"Rye\",\r\n        \"quantity\" : 2\r\n    },\r\n    \"nut\" : {\r\n        \"name\" : \"Nut\",\r\n        \"quantity\" : 3\r\n    },\r\n    \"amount\" : 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "localhost:8080/add"
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/update",
+      "id": "e7887e34-551e-4f5a-bd79-69f001c1940a",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\" : 1,\r\n    \"us\" : {\r\n        \"name\" : \"Andrea\",\r\n        \"lastName\" : \"Niño\",\r\n        \"phone\" : \"3223451255\",\r\n        \"address\" : \"CR 5 #3-1\"\r\n    },\r\n    \"wholemeal\" : {\r\n        \"name\" : \"Wholemeal\",\r\n        \"quantity\" : 5\r\n    },\r\n    \"rye\" : {\r\n        \"name\" : \"Rye\",\r\n        \"quantity\" : 0\r\n    },\r\n    \"nut\" : {\r\n        \"name\" : \"Nut\",\r\n        \"quantity\" : 2\r\n    },\r\n    \"amount\" : 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "localhost:8080/update"
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/delete",
+      "id": "e31bcf0c-8bc4-45d7-800a-dfab889de73d",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\" : 1,\r\n    \"us\" : {\r\n        \"name\" : \"Andrea\",\r\n        \"lastName\" : \"Niño\",\r\n        \"phone\" : 3223451255,\r\n        \"address\" : \"CR 5 #3-1\"\r\n    },\r\n    \"wholemeal\" : {\r\n        \"name\" : \"Wholemeal\",\r\n        \"quantity\" : 3\r\n    },\r\n    \"rye\" : {\r\n        \"name\" : \"Rye\",\r\n        \"quantity\" : 0\r\n    },\r\n    \"nut\" : {\r\n        \"name\" : \"Nut\",\r\n        \"quantity\" : 0\r\n    },\r\n    \"amount\" : 50\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "localhost:8080/delete"
+      },
+      "response": []
+    }
+  ]
+}
