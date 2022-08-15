@@ -1,9 +1,7 @@
 package com.bakeryExodos.ExodosBakery.controller;
 
 import com.bakeryExodos.ExodosBakery.DTO.*;
-import com.bakeryExodos.ExodosBakery.DTO.BreadDTO.NutBreadDTO;
-import com.bakeryExodos.ExodosBakery.DTO.BreadDTO.RyeBreadDTO;
-import com.bakeryExodos.ExodosBakery.DTO.BreadDTO.WholemealBreadDTO;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -13,205 +11,154 @@ import java.util.List;
 @RestController
 public class OrderController {
 
-    List<OrderDTO> list = new ArrayList<>();
+    MethodCRUDDTO functionDTO = new MethodCRUDDTO();
 
 
-    // Method GET -- Obtiene todos los pedidos.
+    // ====================== Method GET ======================
     @GetMapping("/orders")
     public List<OrderDTO> getOrder() {
-        return list;
+        return functionDTO.getOrder();
     }
 
-    // Method POST
+    // ----- Family HTTP Status for Get -----
+    @PostMapping("/orders")
+    @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED, reason = "METHOD_NOT_ALLOWED")
+    public String getOrderGetIn(
+            @RequestBody OrderDTO order
+    ) {
+        System.out.println("Method incorrect, try with GET");
+        return "Method incorrect, try with GET";
+    }
+    @PutMapping("/orders")
+    @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED, reason = "METHOD_NOT_ALLOWED")
+    public String getOrderPutIn(
+            @RequestBody OrderDTO order
+    ) {
+        System.out.println("Method incorrect, try with GET");
+        return "Method incorrect, try with GET";
+    }
+    @DeleteMapping("/orders")
+    @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED, reason = "METHOD_NOT_ALLOWED")
+    public String getOrderDeleteIn(
+            @RequestBody OrderDTO order
+    ) {
+        System.out.println("Method incorrect, try with GET");
+        return "Method incorrect, try with GET";
+    }
+
+
+
+    // ====================== Method POST ======================
     @PostMapping("/add")
-    public List<OrderDTO> postOrder(
+    @ResponseStatus(code = HttpStatus.CREATED, reason = "ORDER SAVE")
+    public String postOrder(
             @RequestBody OrderDTO order
     ) {
-
-        int amountRye = 0;
-        int amountWholemeal = 0;
-        int amountNut = 0;
-
-        UserDTO us = new UserDTO(order.getUs().getName(),
-                order.getUs().getLastName(),
-                order.getUs().getPhone(),
-                order.getUs().getAddress());
-
-        BRDTO brdto = new BRDTO();
-        int amountAvaR = brdto.availabilityR(list);
-        int amountAvaW = brdto.availabilityW(list);
-        int amountAvaN = brdto.availabilityN(list);
-
-        System.out.println(brdto.checkPhone(order.getUs().getPhone()));
-
-        int availabilityRye = amountAvaR - order.getRye().getQuantity();
-        int availabilityNut = amountAvaN - order.getNut().getQuantity();
-        int availabilityWholemeal = amountAvaW - order.getWholemeal().getQuantity();
-
-        int quantityW = 0;
-        int quantityR = 0;
-        int quantityN = 0;
-
-        if (availabilityRye >= 0) {
-            amountRye = order.getRye().getQuantity() * order.getRye().getPrice();
-            quantityR = order.getRye().getQuantity();
-        } else {
-            availabilityRye = -1;
-        }
-
-        if (availabilityWholemeal >= 0) {
-            amountWholemeal = order.getWholemeal().getQuantity() * order.getWholemeal().getPrice();
-            quantityW = order.getWholemeal().getQuantity();
-        } else {
-            availabilityWholemeal = -1;
-        }
-
-        if (availabilityNut >= 0) {
-            amountNut = order.getNut().getQuantity() * order.getNut().getPrice();
-            quantityN = order.getNut().getQuantity();
-        } else {
-            availabilityNut = -1;
-        }
-
-        WholemealBreadDTO wholemealBread = new WholemealBreadDTO(order.getWholemeal().getName(),
-                quantityW);
-
-        RyeBreadDTO ryeBread = new RyeBreadDTO(order.getRye().getName(),
-                quantityR);
-
-        NutBreadDTO nutBread = new NutBreadDTO(order.getNut().getName(),
-                quantityN);
-
-        if (availabilityRye >= 0) {
-            ryeBread.setAvailability(availabilityRye);
-        } else {
-            ryeBread.setAvailability(amountAvaR);
-        }
-
-        if (availabilityWholemeal >= 0) {
-            wholemealBread.setAvailability(availabilityWholemeal);
-        } else {
-            wholemealBread.setAvailability(amountAvaW);
-        }
-
-        if (availabilityNut >= 0) {
-            nutBread.setAvailability(availabilityNut);
-        } else {
-            nutBread.setAvailability(amountAvaN);
-        }
-
-        int amount = amountRye + amountNut + amountWholemeal;
-
-        list.add(new OrderDTO(order.getId(), us, wholemealBread, ryeBread,
-                nutBread, amount));
-
-
-        return list;
+        String result = functionDTO.postOrder(order);
+        System.out.println(result);
+        return result;
     }
 
-    // Método PUT
+    // ----- Family HTTP Status for Post -----
+    @GetMapping("/add")
+    @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED, reason = "METHOD_NOT_ALLOWED")
+    public String postOrderGetIn(
+            @RequestBody OrderDTO order
+    ) {
+        System.out.println("Method incorrect, try with POST");
+        return "Method incorrect, try with POST";
+    }
+
+    @PutMapping("/add")
+    @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED, reason = "METHOD_NOT_ALLOWED")
+    public String postOrderPutIn(
+            @RequestBody OrderDTO order
+    ) {
+        System.out.println("Method incorrect, try with POST");
+        return "Method incorrect, try with POST";
+    }
+
+    @DeleteMapping("/add")
+    @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED, reason = "METHOD_NOT_ALLOWED")
+    public String postOrderDeleteIn(
+            @RequestBody OrderDTO order
+    ) {
+        System.out.println("Method incorrect, try with POST");
+        return "Method incorrect, try with POST";
+    }
+
+
+
+    // ====================== Method PUT ======================
     @PutMapping("/update")
-    public List<OrderDTO> putOrder(
+    @ResponseStatus(code = HttpStatus.CREATED, reason = "ORDER UPDATE")
+    public String putOrder(
             @RequestBody OrderDTO order
     ) {
-        BRDTO brdto = new BRDTO();
-        int amountAvaR = brdto.availabilityR(list);
-        int amountAvaW = brdto.availabilityW(list);
-        int amountAvaN = brdto.availabilityN(list);
-
-        System.out.println(brdto.checkPhone(order.getUs().getPhone()));
-        list.forEach(data -> {
-            if (data.getId() == order.getId()) {
-                data.getUs().setName(order.getUs().getName());
-                data.getUs().setAddress(order.getUs().getAddress());
-                data.getUs().setPhone(order.getUs().getPhone());
-                data.getUs().setLastName(order.getUs().getLastName());
-
-                int availabilityRye = amountAvaR - order.getRye().getQuantity();
-                int availabilityNut = amountAvaN - order.getNut().getQuantity();
-                int availabilityWholemeal = amountAvaW - order.getWholemeal().getQuantity();
-
-                int quantityW = 0;
-                int quantityR = 0;
-                int quantityN = 0;
-
-                int amountRye = 0;
-                int amountWholemeal = 0;
-                int amountNut = 0;
-
-                if (availabilityRye >= 0) {
-                    amountRye = order.getRye().getQuantity() * order.getRye().getPrice();
-                    data.getRye().setQuantity(order.getRye().getQuantity());
-                } else {
-                    availabilityRye = -1;
-                    data.getRye().setQuantity(0);
-                }
-
-                if (availabilityWholemeal >= 0) {
-                    amountWholemeal = order.getWholemeal().getQuantity() * order.getWholemeal().getPrice();
-                    data.getWholemeal().setQuantity(order.getWholemeal().getQuantity());
-                } else {
-                    availabilityWholemeal = -1;
-                    data.getWholemeal().setQuantity(0);
-                }
-
-                if (availabilityNut >= 0) {
-                    amountNut = order.getNut().getQuantity() * order.getNut().getPrice();
-                    data.getNut().setQuantity(order.getNut().getQuantity());
-                } else {
-                    availabilityNut = -1;
-                    data.getNut().setQuantity(0);
-                }
-
-                WholemealBreadDTO wholemealBread = new WholemealBreadDTO(order.getWholemeal().getName(),
-                        quantityW);
-
-                RyeBreadDTO ryeBread = new RyeBreadDTO(order.getRye().getName(),
-                        quantityR);
-
-                NutBreadDTO nutBread = new NutBreadDTO(order.getNut().getName(),
-                        quantityN);
-
-                if (availabilityRye >= 0) {
-                    ryeBread.setAvailability(availabilityRye);
-                    data.getRye().setAvailability(availabilityRye);
-                } else {
-                    ryeBread.setAvailability(amountAvaR);
-                    data.getRye().setAvailability(amountAvaR);
-                }
-
-                if (availabilityWholemeal >= 0) {
-                    wholemealBread.setAvailability(availabilityWholemeal);
-                    data.getWholemeal().setAvailability(availabilityWholemeal);
-                } else {
-                    wholemealBread.setAvailability(amountAvaW);
-                    data.getWholemeal().setAvailability(amountAvaW);
-                }
-
-                if (availabilityNut >= 0) {
-                    nutBread.setAvailability(availabilityNut);
-                    data.getNut().setAvailability(availabilityNut);
-                } else {
-                    nutBread.setAvailability(amountAvaN);
-                    data.getNut().setAvailability(amountAvaN);
-                }
-
-                data.setAmount(amountRye + amountWholemeal + amountNut);
-            }
-        });
-        return list;
+        String result = functionDTO.putOrder(order);
+        System.out.println(result);
+        return result;
     }
 
-    // Method DELETE
+    // ----- Family HTTP Status for Put -----
+    @GetMapping("/update")
+    @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED, reason = "METHOD_NOT_ALLOWED")
+    public String putOrderGetIn(
+            @RequestBody OrderDTO order
+    ) {
+        System.out.println("Method incorrect, try with PUT");
+        return "Method incorrect, try with PUT";
+    }
+
+    @PostMapping("/update")
+    @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED, reason = "METHOD_NOT_ALLOWED")
+    public String putOrderPostIn(
+            @RequestBody OrderDTO order
+    ) {
+        System.out.println("Method incorrect, try with PUT");
+        return "Method incorrect, try with PUT";
+    }
+
+    @DeleteMapping("/update")
+    @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED, reason = "METHOD_NOT_ALLOWED")
+    public String putOrderDeleteIn(
+            @RequestBody OrderDTO order
+    ) {
+        System.out.println("Method incorrect, try with PUT");
+        return "Method incorrect, try with PUT";
+    }
+
+
+    // ====================== Method DELETE ======================
     @DeleteMapping("/delete")
-    public List<OrderDTO> deleteOrder(
+    @ResponseStatus(code = HttpStatus.CREATED, reason = "ORDER UPDATE")
+    public String deleteOrder(
             @RequestBody OrderDTO order
     ) {
-        for (int i = 0; i < list.toArray().length; i++) {
-            if (list.get(i).getId() == order.getId() && list.get(i).getUs().getName().contains(order.getUs().getName())) {
-                list.remove(i);
-            }
-        }
-        return list;
+        System.out.println(functionDTO.deleteOrder(order));
+        return functionDTO.deleteOrder(order);
     }
+
+    // ----- Family HTTP Status for Delete -----
+    @GetMapping("/delete")
+    @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED, reason = "METHOD_NOT_ALLOWED")
+    public String deleteOrderGetIn() {
+        System.out.println("Method incorrect, try with DELETE");
+        return "Method incorrect, try with DELETE";
+    }
+
+    @PostMapping("/delete")
+    @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED, reason = "METHOD_NOT_ALLOWED")
+    public String deleteOrderPostIn() {
+        System.out.println("Method incorrect, try with DELETE");
+        return "Method incorrect, try with DELETE";
+    }
+
+    @PutMapping("/delete")
+    @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED, reason = "METHOD_NOT_ALLOWED")
+    public String deleteOrderPutIn() {
+        System.out.println("Method incorrect, try with DELETE");
+        return "Method incorrect, try with DELETE";
+    }
+
 }

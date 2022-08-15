@@ -2,6 +2,7 @@ package com.bakeryExodos.ExodosBakery.DTO.BreadDTO;
 
 public class WholemealBreadDTO {
 
+    // Lombok no funciono
     String name = "Wholemeal";
     int price = 3000;
     int availability = 100;

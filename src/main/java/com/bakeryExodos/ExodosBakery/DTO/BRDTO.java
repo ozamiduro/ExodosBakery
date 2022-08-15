@@ -8,6 +8,8 @@ import java.util.List;
 
 public class BRDTO {
 
+    MethodCRUDDTO fd = new MethodCRUDDTO();
+
     WholemealBreadDTO wholemealBread = new WholemealBreadDTO("", 0);
     NutBreadDTO nutBread = new NutBreadDTO("", 0);
     RyeBreadDTO ryeBread = new RyeBreadDTO("", 0);
