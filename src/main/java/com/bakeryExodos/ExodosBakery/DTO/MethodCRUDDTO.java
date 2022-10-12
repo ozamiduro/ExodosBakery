@@ -194,11 +194,18 @@ public class MethodCRUDDTO {
     }
 
     public String deleteOrder (OrderDTO order) {
+        int toDelete = -1;
         for (int i = 0; i < list.toArray().length; i++) {
             if (list.get(i).getId() == order.getId() && list.get(i).getUs().getName().contains(order.getUs().getName())) {
-                list.remove(i);
+                toDelete = i;
             }
         }
-        return "Order deleted";
+
+        if (toDelete != -1) {
+            list.remove(toDelete);
+            return "Order: "+ order.getUs().getName() +", deleted";
+        } else {
+            return "there was no order named: "+ order.getUs().getName();
+        }
     }
 }
