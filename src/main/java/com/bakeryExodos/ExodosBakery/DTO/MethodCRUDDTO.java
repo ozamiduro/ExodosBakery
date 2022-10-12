@@ -3,16 +3,20 @@ package com.bakeryExodos.ExodosBakery.DTO;
 import com.bakeryExodos.ExodosBakery.DTO.BreadDTO.NutBreadDTO;
 import com.bakeryExodos.ExodosBakery.DTO.BreadDTO.RyeBreadDTO;
 import com.bakeryExodos.ExodosBakery.DTO.BreadDTO.WholemealBreadDTO;
+import com.bakeryExodos.ExodosBakery.controller.OrderController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MethodCRUDDTO {
+    Logger logger = Logger.getLogger(MethodCRUDDTO.class.getName());
 
     List<OrderDTO> list = new ArrayList<>();
 
     public List<OrderDTO> getOrder() {
-        System.out.println(list.toArray().length);
+        logger.log(Level.INFO, String.valueOf(list.toArray().length));
         return list;
     }
 
@@ -31,7 +35,8 @@ public class MethodCRUDDTO {
         int amountAvaW = brdto.availabilityW(list);
         int amountAvaN = brdto.availabilityN(list);
 
-        System.out.println(brdto.checkPhone(order.getUs().getPhone()));
+
+        logger.log(Level.INFO, brdto.checkPhone(order.getUs().getPhone()));
 
         int availabilityRye = amountAvaR - order.getRye().getQuantity();
         int availabilityNut = amountAvaN - order.getNut().getQuantity();
@@ -94,7 +99,7 @@ public class MethodCRUDDTO {
         list.add(new OrderDTO(order.getId(), us, wholemealBread, ryeBread,
                 nutBread, amount));
 
-        System.out.println("Order saved: " + list.toArray().length);
+        logger.log(Level.INFO, "Order saved: " + list.toArray().length);
         return "Order saved";
     }
 
@@ -184,7 +189,7 @@ public class MethodCRUDDTO {
                 data.setAmount(amountRye + amountWholemeal + amountNut);
             }
         });
-        System.out.println("Order updated: " + list.toArray().length);
+        logger.log(Level.INFO,"Order updated: " + list.toArray().length);
         return "Order updated";
     }
 

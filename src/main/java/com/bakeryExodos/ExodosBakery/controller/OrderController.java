@@ -6,15 +6,22 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 @RestController
 public class OrderController {
 
+    //====================== Create Logger ======================
+    Logger logger = Logger.getLogger(OrderController.class.getName());
+
+
+
     MethodCRUDDTO functionDTO = new MethodCRUDDTO();
 
 
-    // ====================== Method GET ======================
+    // ====================== GET Method ======================
     @GetMapping("/orders")
     public List<OrderDTO> getOrder() {
         return functionDTO.getOrder();
@@ -26,7 +33,7 @@ public class OrderController {
     public String getOrderGetIn(
             @RequestBody OrderDTO order
     ) {
-        System.out.println("Method incorrect, try with GET");
+        logger.log(Level.WARNING,"Method incorrect, try with GET");
         return "Method incorrect, try with GET";
     }
     @PutMapping("/orders")
@@ -34,7 +41,7 @@ public class OrderController {
     public String getOrderPutIn(
             @RequestBody OrderDTO order
     ) {
-        System.out.println("Method incorrect, try with GET");
+        logger.log(Level.WARNING,"Method incorrect, try with GET");
         return "Method incorrect, try with GET";
     }
     @DeleteMapping("/orders")
@@ -42,7 +49,7 @@ public class OrderController {
     public String getOrderDeleteIn(
             @RequestBody OrderDTO order
     ) {
-        System.out.println("Method incorrect, try with GET");
+        logger.log(Level.WARNING,"Method incorrect, try with GET");
         return "Method incorrect, try with GET";
     }
 
@@ -55,7 +62,7 @@ public class OrderController {
             @RequestBody OrderDTO order
     ) {
         String result = functionDTO.postOrder(order);
-        System.out.println(result);
+        logger.log(Level.INFO,result);
         return result;
     }
 
@@ -65,7 +72,7 @@ public class OrderController {
     public String postOrderGetIn(
             @RequestBody OrderDTO order
     ) {
-        System.out.println("Method incorrect, try with POST");
+        logger.log(Level.WARNING,"Method incorrect, try with POST");
         return "Method incorrect, try with POST";
     }
 
@@ -74,7 +81,7 @@ public class OrderController {
     public String postOrderPutIn(
             @RequestBody OrderDTO order
     ) {
-        System.out.println("Method incorrect, try with POST");
+        logger.log(Level.WARNING,"Method incorrect, try with POST");
         return "Method incorrect, try with POST";
     }
 
@@ -83,7 +90,7 @@ public class OrderController {
     public String postOrderDeleteIn(
             @RequestBody OrderDTO order
     ) {
-        System.out.println("Method incorrect, try with POST");
+        logger.log(Level.WARNING,"Method incorrect, try with POST");
         return "Method incorrect, try with POST";
     }
 
@@ -96,7 +103,7 @@ public class OrderController {
             @RequestBody OrderDTO order
     ) {
         String result = functionDTO.putOrder(order);
-        System.out.println(result);
+        logger.log(Level.INFO,result);
         return result;
     }
 
@@ -106,7 +113,7 @@ public class OrderController {
     public String putOrderGetIn(
             @RequestBody OrderDTO order
     ) {
-        System.out.println("Method incorrect, try with PUT");
+        logger.log(Level.WARNING,"Method incorrect, try with PUT");
         return "Method incorrect, try with PUT";
     }
 
@@ -115,7 +122,7 @@ public class OrderController {
     public String putOrderPostIn(
             @RequestBody OrderDTO order
     ) {
-        System.out.println("Method incorrect, try with PUT");
+        logger.log(Level.WARNING,"Method incorrect, try with PUT");
         return "Method incorrect, try with PUT";
     }
 
@@ -124,7 +131,7 @@ public class OrderController {
     public String putOrderDeleteIn(
             @RequestBody OrderDTO order
     ) {
-        System.out.println("Method incorrect, try with PUT");
+        logger.log(Level.WARNING,"Method incorrect, try with PUT");
         return "Method incorrect, try with PUT";
     }
 
@@ -135,7 +142,7 @@ public class OrderController {
     public String deleteOrder(
             @RequestBody OrderDTO order
     ) {
-        System.out.println(functionDTO.deleteOrder(order));
+        logger.log(Level.INFO,functionDTO.deleteOrder(order));
         return functionDTO.deleteOrder(order);
     }
 
@@ -143,21 +150,22 @@ public class OrderController {
     @GetMapping("/delete")
     @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED, reason = "METHOD_NOT_ALLOWED")
     public String deleteOrderGetIn() {
-        System.out.println("Method incorrect, try with DELETE");
+        logger.log(Level.WARNING,"Method incorrect, try with DELETE");
         return "Method incorrect, try with DELETE";
     }
 
     @PostMapping("/delete")
     @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED, reason = "METHOD_NOT_ALLOWED")
     public String deleteOrderPostIn() {
-        System.out.println("Method incorrect, try with DELETE");
+
+        logger.log(Level.WARNING,"Method incorrect, try with DELETE");
         return "Method incorrect, try with DELETE";
     }
 
     @PutMapping("/delete")
     @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED, reason = "METHOD_NOT_ALLOWED")
     public String deleteOrderPutIn() {
-        System.out.println("Method incorrect, try with DELETE");
+        logger.log(Level.WARNING,"Method incorrect, try with DELETE");
         return "Method incorrect, try with DELETE";
     }
 
