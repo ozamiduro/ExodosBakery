@@ -1,12 +1,11 @@
 package com.bakeryExodos.ExodosBakery.DTO.BreadDTO;
 
 public interface BreadDTO {
+    String name();
 
-    public String name();
+     Integer price();
 
-    public Integer price();
-
-    public Integer availability();
+     Integer availability();
 
 
 }
