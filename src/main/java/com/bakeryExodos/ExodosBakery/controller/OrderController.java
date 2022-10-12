@@ -12,14 +12,16 @@ import java.util.logging.Logger;
 
 @RestController
 public class OrderController {
+
     //====================== Create Logger ======================
     Logger logger = Logger.getLogger(OrderController.class.getName());
+
 
 
     MethodCRUDDTO functionDTO = new MethodCRUDDTO();
 
 
-    // ====================== Method GET ======================
+    // ====================== GET Method ======================
     @GetMapping("/orders")
     public List<OrderDTO> getOrder() {
         return functionDTO.getOrder();
